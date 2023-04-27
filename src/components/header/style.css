@@ -1,0 +1,89 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  padding-top: 1rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #FFFFFF;
+}
+
+
+header>ul>li>a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.offcanvas-title{
+  color: #000000;
+}
+.offcanvas-body{
+  background-color: #000000;
+}
+
+@media (max-width: 780px) {
+  header {
+    padding: 0;
+    justify-content: space-between;
+  }
+}
+header .img-header {
+  width: 80px;
+}
+@media (max-width: 780px) {
+  header .img-header {
+    width: 70px;
+  }
+}
+header ul {
+  font-family: "Bebas Neue", "sans-serif";
+  display: flex;
+  gap: 1rem;
+  font-size: 2rem;
+  letter-spacing: 3px;
+}
+@media (max-width: 780px) {
+  #options-header{
+    display: none;
+  }
+}
+header ul li {
+  list-style: none;
+}
+header ul li a:hover {
+  color: #9F6418;
+  transition: 0.3s;
+}
+
+.btn-menu{
+  display: none;
+}
+@media( max-width:780px){
+  .btn-menu{
+    margin: 1.8rem 1.5rem 0rem 0rem;
+
+    display: block;
+  }
+}
+
+.menu-options{
+  display: block;
+}
+.menu-options>li>a{
+
+  text-decoration: none;
+  color: #FFFFFF;
+  
+}
+.social-newtworks{
+  margin-top: 5rem;
+  display: flex;
+  gap: 2rem;
+}
+.social-newtworks>li>a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+/*# sourceMappingURL=style.css.map */

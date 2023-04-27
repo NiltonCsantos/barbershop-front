@@ -1,0 +1,64 @@
+#professionals{
+  // border: 2px solid red;
+
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0rem;
+  gap: 2rem;
+
+  .professional{
+
+    color: #9F6418;
+    // border: 2px solid black;
+    height: 300px;
+    width: 280px;
+    
+    display: flex;
+    border-radius: 1px;
+    box-shadow: 2px 1px 15px 0px #ffffff1a;
+    cursor: pointer;
+
+    &:hover{
+
+      margin-top: -0.7rem;
+
+        box-shadow: 0px 2px 18px 0px #ffffff1a;
+        transition: 0.3s;
+
+      }
+ 
+    
+
+    p{
+    font-family: 'Bebas Neue', 'sans-serif';
+    font-size: 1.8rem;
+    padding: 0.2rem;
+    height: 2.5rem;
+    border-radius: 0rem  0rem 1rem 0rem;
+    
+     background-color: #000000de;
+  
+    }
+
+  }
+
+  .professional1{
+    background: url(./barbeiro1.jpg) no-repeat no-repeat;
+    background-size: cover;
+  }
+  .professional2{
+    background: url(./barbeiro2.jpg) no-repeat no-repeat;
+    background-size: cover;
+  }
+  .professional3{
+    background: url(./barbeiro3.jpg) no-repeat no-repeat;
+    background-size: cover;
+  }
+  .professional4{
+    background: url(./barbeiro4.png) no-repeat no-repeat;
+    background-size: cover;
+  }
+
+ 
+
+}

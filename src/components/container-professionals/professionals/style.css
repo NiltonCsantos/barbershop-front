@@ -1,0 +1,46 @@
+#professionals {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0rem;
+  gap: 2rem;
+}
+#professionals .professional {
+  color: #9F6418;
+  height: 300px;
+  width: 280px;
+  display: flex;
+  border-radius: 1px;
+  box-shadow: 2px 1px 15px 0px rgba(255, 255, 255, 0.1019607843);
+  cursor: pointer;
+}
+#professionals .professional:hover {
+  margin-top: -0.7rem;
+  box-shadow: 0px 2px 18px 0px rgba(255, 255, 255, 0.1019607843);
+  transition: 0.3s;
+}
+#professionals .professional p {
+  font-family: "Bebas Neue", "sans-serif";
+  font-size: 1.8rem;
+  padding: 0.2rem;
+  height: 2.5rem;
+  border-radius: 0rem 0rem 1rem 0rem;
+  background-color: rgba(0, 0, 0, 0.8705882353);
+}
+#professionals .professional1 {
+  background: url(./barbeiro1.jpg) no-repeat no-repeat;
+  background-size: cover;
+}
+#professionals .professional2 {
+  background: url(./barbeiro2.jpg) no-repeat no-repeat;
+  background-size: cover;
+}
+#professionals .professional3 {
+  background: url(./barbeiro3.jpg) no-repeat no-repeat;
+  background-size: cover;
+}
+#professionals .professional4 {
+  background: url(./barbeiro4.png) no-repeat no-repeat;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=style.css.map */

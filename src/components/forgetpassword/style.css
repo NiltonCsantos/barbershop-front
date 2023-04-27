@@ -1,0 +1,25 @@
+.containerpassword {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+}
+
+.btn-forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 280px;
+}
+
+.btn-forget>button {
+  width: 6rem;
+  background: none;
+  border: 2px solid #9f6418;
+  color: #ffffff;
+  padding: 0.2rem;
+  border-radius: 1rem;
+  letter-spacing: 3px;
+  font-family: "bebas Neue", sans-serif;
+}
