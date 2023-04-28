@@ -8,8 +8,9 @@
 
 @media(max-width:600px){
   .cover{
-    background: url("./cover-mobile.png") no-repeat no-repeat;
+    background: url("./cover-mobile.jpg") no-repeat no-repeat;
   }
 }
+
 
 /*# sourceMappingURL=style.css.map */
