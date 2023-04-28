@@ -77,10 +77,10 @@ const NewPassword = () => {
       <div className="content-form">
         <form onSubmit={HandleSubmit} className="form-login">
           <div className="login">
-            <h2>LOGIN</h2>
+            <h1>LOGIN</h1>
           </div>
           <div className="inputs">
-            <label htmlFor="newPassword">Nova senha:</label>
+            <label htmlFor="newPassword">senha:</label>
             <input
               type={"password"}
               id="newPassword"
@@ -90,7 +90,7 @@ const NewPassword = () => {
             ></input>
           </div>
           <div className="inputs">
-            <label htmlFor="confirmPassword">Nova senha:</label>
+            <label htmlFor="confirmPassword">senha:</label>
             <input
               type={"password"}
               id="confirmPassword"
@@ -101,7 +101,7 @@ const NewPassword = () => {
           </div>
           <p className="user-error">{error}</p>
       
-          <div className="btn-class">
+          <div className="btn-newpassword">
             <button type="button">
               <Link to={"/login"}>Voltar</Link>
             </button>

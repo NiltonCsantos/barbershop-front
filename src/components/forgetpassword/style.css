@@ -14,7 +14,8 @@
 }
 
 .btn-forget>button {
-  width: 6rem;
+  width: 7.4rem;
+  font-size: 1.5rem;
   background: none;
   border: 2px solid #9f6418;
   color: #ffffff;
@@ -23,3 +24,38 @@
   letter-spacing: 3px;
   font-family: "bebas Neue", sans-serif;
 }
+.btn-forget>a:hover {
+  color: #9f6418;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-newpassword>button:hover {
+  color: #9f6418;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn-newpassword {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 280px;
+}
+
+.btn-newpassword>button {
+  width: 7.4rem;
+  font-size: 1.5rem;
+  background: none;
+  border: 2px solid #9f6418;
+  color: #ffffff;
+  padding: 0.2rem;
+  border-radius: 1rem;
+  letter-spacing: 3px;
+  font-family: "bebas Neue", sans-serif;
+}
+.btn-newpassword>button>a:hover {
+  color: #9f6418;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
