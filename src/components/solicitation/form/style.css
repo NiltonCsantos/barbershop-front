@@ -6,7 +6,7 @@
   background: url(./cover.png) no-repeat no-repeat;
   font-family: "Bebas Neue", sans-serif;
   background-color: #000000;
-  border: 2px solid red;
+  min-height: 100vh;
 }
 @media(max-width:310px){
   .container-solicitation {
