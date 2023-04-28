@@ -22,19 +22,16 @@ const Form = (props) => {
   const [messageEmailRegister, setMessageEmailRegister] = useState("");
   const [messaPasswordRegister, setMessaPasswordRegister] = useState("");
   const [span, setSpan] = useState(false);
-  const [confirm, setConfirm] = useState("");
+ 
 
   if (redirectToLogin) {
     return <Navigate to={"/login"} />;
   }
 
   if (redirectToSolicitation) {
-    if (confirm) {
-      if (confirm.match("sim")) {
-        localStorage.setItem("confirm", confirm);
-      }
+  
       return <Navigate to={"/login/solicitation"} />;
-    }
+
   }
 
   if (error) {
@@ -102,7 +99,7 @@ const Form = (props) => {
         localStorage.setItem("name", name);
         localStorage.setItem("token", token);
 
-        if (token) {
+        if (user.data.token.match(token)) {
           setRedirectToSolicitation(true);
         }
         if (fields.password.length >= 8) {
@@ -115,10 +112,6 @@ const Form = (props) => {
       setErrorUser(error.response.data);
       console.log(error.response.data);
     }
-  };
-
-  const HandleClick = (event) => {
-    setConfirm(event.currentTarget.value);
   };
 
 
@@ -185,7 +178,7 @@ const Form = (props) => {
           <div className="login">
             <h1>LOGIN</h1>
           </div>
-
+          
           <div className="inputs">
             <label htmlFor="email">Email:</label>
             <input
