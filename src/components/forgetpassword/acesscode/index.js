@@ -60,7 +60,7 @@ const AcessCode = () => {
       <div className="content-form">
         <form onSubmit={HandleSubmit} className="form-login">
           <div className="login">
-            <h2>LOGIN</h2>
+            <h1>LOGIN</h1>
           </div>
           <div className="inputs">
             <label htmlFor="code">Código:</label>
