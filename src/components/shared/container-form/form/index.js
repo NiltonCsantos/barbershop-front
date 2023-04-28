@@ -55,11 +55,11 @@ const Form = (props) => {
     ev.preventDefault();
 
     try {
+      setSpinner(true);
       if (
         fields.email.match(/\w{2,}@[g][m][a][i][l]\.[c][o][m]/) ||
         fields.email.match(/\w{2,}@[o][u][t][l][o][o][k]\.[c][o][m]/)
       ) {
-        setMessageEmailRegister(" ");
 
         if (fields.password.length >= 8) {
           setMessaPasswordRegister(" ");
@@ -78,21 +78,21 @@ const Form = (props) => {
       }
     } catch (error) {
       setError(true);
-      console.log(error.response.data);
+      setSpinner(false);
     }
   };
 
   const HandleLoginSubmite = async (ev) => {
     ev.preventDefault();
 
-    setSpinner(true);
-
     try {
       if (
         fields.email.match(/\w{2,}@[g][m][a][i][l]\.[c][o][m]/) ||
         fields.email.match(/\w{2,}@[o][u][t][l][o][o][k]\.[c][o][m]/)
       ) {
-        setMessageEmailLogin(" ");
+        setMessageEmailLogin("");
+
+        setSpinner(true);
 
         const user = await UsersService.login({
           email: fields.email,
@@ -154,7 +154,7 @@ const Form = (props) => {
           <p
             className="user-error"
             style={{
-              display: messaPasswordRegister.length > 1 ? "block" : "none",
+              display: messageEmailRegister.length > 1 ? "block" : "none",
             }}
           >
             {messageEmailRegister}
@@ -169,6 +169,13 @@ const Form = (props) => {
               required
               onChange={HandleChange}
             ></input>
+          </div>
+          <div className="spinner" style={{display:spinner?"block": "none"}}>
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
           </div>
           <p className="user-error">{messaPasswordRegister}</p>
           <div className="options">
