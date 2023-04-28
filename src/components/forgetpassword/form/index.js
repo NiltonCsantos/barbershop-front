@@ -8,10 +8,12 @@ const FormPassword = () => {
   });
   const [message, setMessage] = useState("");
   const [confirm, setConfirm]=useState(false);
+  const [spinner, setSpinner] = useState(false);
   
     if(confirm){
       return <Navigate to={"/login/forgetpassword/acesscode"}/>
     }
+
   
 
   const ValidateUser = (email) => {
@@ -42,6 +44,8 @@ const FormPassword = () => {
     
       try {
 
+        setSpinner(true);
+
         const response = await UsersService.forgetPassword({
           email: fields.email,
         })
@@ -60,6 +64,10 @@ const FormPassword = () => {
        
       } catch (error) {
         setMessage(error.response.data);
+        setSpinner(false);
+        setTimeout(() => {
+          setMessage("")
+        }, 3000);
       }
     }
   };
@@ -85,7 +93,13 @@ const FormPassword = () => {
           ></input>
         </div>
         <p className="user-error">{message}</p>
-        
+        <div className="spinner" style={{display:spinner?"block": "none"}}>
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
         <div className="btn-forget">
           <button type="button">
             <Link to={"/login"}>Voltar</Link>

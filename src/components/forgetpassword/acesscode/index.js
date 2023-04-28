@@ -13,6 +13,8 @@ const AcessCode = () => {
 
   const[ redirectToNewPassword, setRedirectToNewPassword]= useState(false);
 
+  const [spinner, setSpinner] = useState(false);
+
   if(redirectToNewPassword){
     return <Navigate to={"/login/forgetpassword/newPassword"}/>
   }
@@ -31,14 +33,13 @@ const AcessCode = () => {
 
     try {
 
+      setSpinner(true);
       const response=await UsersService.code({
         code:fields.code,
         id:localStorage.getItem("id")
       })
 
-      console.log("RES")
-
-      console.log(response.data)
+  
       if(fields.code.match(response.data)){
         setRedirectToNewPassword(true)
       } 
@@ -47,6 +48,11 @@ const AcessCode = () => {
 
       setError(error.response.data);
       
+      setSpinner(false);
+
+      setTimeout(() => {
+        setError("")
+      }, 3000);
     }
 
    
@@ -73,6 +79,13 @@ const AcessCode = () => {
             ></input>
           </div>
           <p className="user-error">{error}</p>
+          <div className="spinner" style={{display:spinner?"block": "none"}}>
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
           <div className="btn-forget">
             <button type="button">
               <Link to={"/login"}>Voltar</Link>

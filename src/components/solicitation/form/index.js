@@ -4,57 +4,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import "./style.css";
 import userService from "../../../services/users";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
-
-const date = new Date();
-
-let realHours = "";
-
-let minutes = "";
-
-
-
- date.setHours(8)
- date.setMinutes(30)
-
-if (date.getHours() < 10) {
-  realHours = date.getHours().toString().padStart(2, "0");
-} else {
-  realHours = date.getHours;
-}
-
-if (date.getMinutes() < 10) {
-  minutes = date.getMinutes().toString().padStart(2, "0");
-} else {
-  minutes = date.getMinutes();
-}
-
-const realClock = realHours + ":" + minutes;
-
-console.log("hor[ário real: "+realClock);
-
-const dateInput = new Date();
-dateInput.setHours(8)
-
-let inputHours="";
-let inputMinutes= ""
-
-if (dateInput.getHours() < 10) {
-  inputHours = dateInput.getHours().toString().padStart(2, "0");
-} else {
-  inputHours = dateInput.getHours();
-}
-
-if (dateInput.getMinutes() < 10) {
-  inputMinutes = dateInput.getMinutes().toString().padStart(2, "0");
-} else {
-  inputMinutes = dateInput.getMinutes();
-}
-
-
-
-const inputClock = inputHours + ":" + inputMinutes;
-console.log("Input horas: " + inputClock)
+import { BiCheckCircle } from "react-icons/bi";
 
 const Form = () => {
   const date = new Date();
@@ -78,6 +28,8 @@ const Form = () => {
   const [checkHairTreatment, setCheckHairTreatment] = useState(false);
   const [errorSpan, setErrorSpan] = useState("");
   const [time, setTime] = useState([]);
+  const [spinner, setSpinner] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   const [fields, setFields] = useState({
     time: " ",
@@ -113,6 +65,8 @@ const Form = () => {
   const HandleSubmit = async (ev) => {
     ev.preventDefault();
 
+    setSpinner(true);
+
     try {
       const id = localStorage.getItem("id");
 
@@ -125,10 +79,14 @@ const Form = () => {
         user: id,
       });
 
-      setChecked(true);
+      setAlert(true);
+
+      setTimeout(() => {
+        setChecked(true);
+      }, 10000);
     } catch (error) {
       setError(error.response.data);
-      console.log(error.response.data);
+      setSpinner(false);
     }
   };
 
@@ -194,245 +152,255 @@ const Form = () => {
   };
 
   function checkTime(hours) {
-    const boolean = time.find((element)=>{
-
-
-      if( element.match(hours)){
-        
-        return  true;
-      }else{
-        return false
+    const boolean = time.find((element) => {
+      if (element.match(hours)) {
+        return true;
+      } else {
+        return false;
       }
-
-     
-
-    }
-
-    );
+    });
 
     return boolean;
   }
 
-  function checkUnaVailableTime(hours) {
-    const color = "";
-
-    time.find((element) =>
-      element.match(hours) ? (color = "unavailabletime") : (color = "")
-    );
-
-    console.log(color);
-  }
-
-  return (
-    <div className="container-solicitation">
-      <div className="form-content">
-        <form className="form-solicitation" onSubmit={HandleSubmit}>
-          <h2>Bem vindo, {localStorage.getItem("name")}</h2>
-          <p>Agendar Dia</p>
-          <div className="calendar">
-            <input
-              type={"date"}
-              min={today}
-              max={maxAgender}
-              required
-              onChange={HandleChange}
-              name="date"
-            ></input>
-          </div>
-          <p>Agendar horário</p>
-          <div>
+  if (!alert) {
+    return (
+      
+      <div className="container-solicitation">
+        <div className="form-content">
+          <form className="form-solicitation" onSubmit={HandleSubmit}>
+            <h2>Bem vindo, {localStorage.getItem("name")}</h2>
+            <p>Agendar Dia</p>
             <div className="calendar">
-              <select
-                className="choose"
-                onClick={HandleSelect}
-                disabled={fields.date.length <= 1 ? true : false}
-                name="time"
-                onChange={HandleChange}
+              <input
+                type={"date"}
+                min={today}
+                max={maxAgender}
                 required
-              >
-                <option value="">Selecione</option>
-                <option
-                  value="07:00"
-                  disabled={checkTime("07:00")}
-                  // className={checkUnaVailableTime("07:00")}
+                onChange={HandleChange}
+                name="date"
+              ></input>
+            </div>
+            <p>Agendar horário</p>
+            <div>
+              <div className="calendar">
+                <select
+                  className="choose"
+                  onClick={HandleSelect}
+                  disabled={fields.date.length <= 1 ? true : false}
+                  name="time"
+                  onChange={HandleChange}
+                  required
                 >
-                  07:00
-                </option>
-                <option value="07:30" disabled={checkTime("07:30")}>
-                  07:30
-                </option>
-                <option value="08:00" disabled={checkTime("08:00")}>
-                  08:00
-                </option>
-                <option value="08:30" disabled={checkTime("08:30")}>
-                  08:30
-                </option>
-                <option value="09:00" disabled={checkTime("09:00")}>
-                  09:00
-                </option>
-                <option value="09:30" disabled={checkTime("09:30")}>
-                  09:30
-                </option>
-                <option value="10:00" disabled={checkTime("10:00")}>
-                  10:00
-                </option>
-                <option value="10:30" disabled={checkTime("10:30")}>
-                  10:30
-                </option>
-                <option value="11:00" disabled={checkTime("11:00")}>
-                  11:00
-                </option>
-                <option value="11:30" disabled={checkTime("11:30")}>
-                  11:30
-                </option>
-                <option value="13:00" disabled={checkTime("13:00")}>
-                  13:00
-                </option>
-                <option value="13:30" disabled={checkTime("13:30")}>
-                  13:30
-                </option>
-                <option value="14:00" disabled={checkTime("14:00")}>
-                  14:00
-                </option>
-                <option value="14:30" disabled={checkTime("14:30")}>
-                  14:30
-                </option>
-                <option value="15:00" disabled={checkTime("15:00")}>
-                  15:00
-                </option>
-                <option value="15:30" disabled={checkTime("15:30")}>
-                  15:30
-                </option>
-                <option value="16:00" disabled={checkTime("16:00")}>
-                  16:00
-                </option>
-                <option value="16:30" disabled={checkTime("16:30")}>
-                  16:30
-                </option>
-                <option value="17:00" disabled={checkTime("17:00")}>
-                  17:00
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <p>Marque o que você deseja fazer</p>
-          <b></b>
-          <span className="user-error">{errorSpan}</span>
-          <div className="hair">
-            <div className="inputs-solicitation">
-              <input
-                type={"checkbox"}
-                name="hair"
-                id="hair"
-                value={"Cabelo"}
-                onChange={HandleChange}
-                onClick={HandleCheckHair}
-                checked={checkHair}
-              ></input>
-              <label htmlFor="hair">Corte de cabelo</label>
+                  <option value="">Selecione</option>
+                  <option
+                    value="07:00"
+                    disabled={checkTime("07:00")}
+                    // className={checkUnaVailableTime("07:00")}
+                  >
+                    07:00
+                  </option>
+                  <option value="07:30" disabled={checkTime("07:30")}>
+                    07:30
+                  </option>
+                  <option value="08:00" disabled={checkTime("08:00")}>
+                    08:00
+                  </option>
+                  <option value="08:30" disabled={checkTime("08:30")}>
+                    08:30
+                  </option>
+                  <option value="09:00" disabled={checkTime("09:00")}>
+                    09:00
+                  </option>
+                  <option value="09:30" disabled={checkTime("09:30")}>
+                    09:30
+                  </option>
+                  <option value="10:00" disabled={checkTime("10:00")}>
+                    10:00
+                  </option>
+                  <option value="10:30" disabled={checkTime("10:30")}>
+                    10:30
+                  </option>
+                  <option value="11:00" disabled={checkTime("11:00")}>
+                    11:00
+                  </option>
+                  <option value="11:30" disabled={checkTime("11:30")}>
+                    11:30
+                  </option>
+                  <option value="13:00" disabled={checkTime("13:00")}>
+                    13:00
+                  </option>
+                  <option value="13:30" disabled={checkTime("13:30")}>
+                    13:30
+                  </option>
+                  <option value="14:00" disabled={checkTime("14:00")}>
+                    14:00
+                  </option>
+                  <option value="14:30" disabled={checkTime("14:30")}>
+                    14:30
+                  </option>
+                  <option value="15:00" disabled={checkTime("15:00")}>
+                    15:00
+                  </option>
+                  <option value="15:30" disabled={checkTime("15:30")}>
+                    15:30
+                  </option>
+                  <option value="16:00" disabled={checkTime("16:00")}>
+                    16:00
+                  </option>
+                  <option value="16:30" disabled={checkTime("16:30")}>
+                    16:30
+                  </option>
+                  <option value="17:00" disabled={checkTime("17:00")}>
+                    17:00
+                  </option>
+                </select>
+              </div>
             </div>
 
-            <div className="inputs-solicitation" required>
-              <input
-                type={"checkbox"}
-                name="barb"
-                id="barb"
-                value={"Barba"}
-                onClick={HandleCheckBarb}
-                checked={checkBarb}
-                onChange={HandleChange}
-              ></input>
-              <label htmlFor="barb">Barba</label>
+            <p>Marque o que você deseja fazer</p>
+            <b></b>
+            <span className="user-error">{errorSpan}</span>
+            <div className="hair">
+              <div className="inputs-solicitation">
+                <input
+                  type={"checkbox"}
+                  name="hair"
+                  id="hair"
+                  value={"Cabelo"}
+                  onChange={HandleChange}
+                  onClick={HandleCheckHair}
+                  checked={checkHair}
+                ></input>
+                <label htmlFor="hair">Corte de cabelo</label>
+              </div>
+
+              <div className="inputs-solicitation" required>
+                <input
+                  type={"checkbox"}
+                  name="barb"
+                  id="barb"
+                  value={"Barba"}
+                  onClick={HandleCheckBarb}
+                  checked={checkBarb}
+                  onChange={HandleChange}
+                ></input>
+                <label htmlFor="barb">Barba</label>
+              </div>
+
+              <div className="inputs-solicitation">
+                <input
+                  type={"checkbox"}
+                  name="eyebrow"
+                  id="eyebrow"
+                  value={"Sombrancelha"}
+                  onClick={HandleCheckEyebrow}
+                  checked={checkEyebrow}
+                  onChange={HandleChange}
+                ></input>
+                <label htmlFor="eyebrow">Sombrancelha</label>
+              </div>
+
+              <div className="inputs-solicitation">
+                <input
+                  type={"checkbox"}
+                  name="hairTreatment"
+                  id="hairTreatment"
+                  value={"Tratamento capilar"}
+                  onClick={HandleCheckHairTreatment}
+                  checked={checkHairTreatment}
+                  onChange={HandleChange}
+                ></input>
+                <label htmlFor="hairTreatment">Tratamento capilar</label>
+              </div>
             </div>
 
-            <div className="inputs-solicitation">
-              <input
-                type={"checkbox"}
-                name="eyebrow"
-                id="eyebrow"
-                value={"Sombrancelha"}
-                onClick={HandleCheckEyebrow}
-                checked={checkEyebrow}
-                onChange={HandleChange}
-              ></input>
-              <label htmlFor="eyebrow">Sombrancelha</label>
+            <p>Selecione um de nossos profissionais</p>
+
+            <div>
+              <div className="inputs-solicitation">
+                <input
+                  type={"radio"}
+                  name="professional"
+                  id="barber1"
+                  value={"Rafa"}
+                  onChange={HandleChange}
+                ></input>
+                <label htmlFor="barber1">Rafa</label>
+              </div>
+
+              <div className="inputs-solicitation">
+                <input
+                  type={"radio"}
+                  name="professional"
+                  id="barber2"
+                  value={"Duca"}
+                  onChange={HandleChange}
+                  required
+                ></input>
+                <label htmlFor="barber2">Duca</label>
+              </div>
+
+              <div className="inputs-solicitation">
+                <input
+                  type={"radio"}
+                  name="professional"
+                  id="barber3"
+                  value={"Cadú"}
+                  onChange={HandleChange}
+                  required
+                ></input>
+                <label htmlFor="barber3">Cadú</label>
+              </div>
+
+              <div className="inputs-solicitation">
+                <input
+                  type={"radio"}
+                  name="professional"
+                  id="barber4"
+                  value={"Léo"}
+                  onChange={HandleChange}
+                  required
+                ></input>
+                <label htmlFor="barber4">Léo</label>
+              </div>
             </div>
 
-            <div className="inputs-solicitation">
-              <input
-                type={"checkbox"}
-                name="hairTreatment"
-                id="hairTreatment"
-                value={"Tratamento capilar"}
-                onClick={HandleCheckHairTreatment}
-                checked={checkHairTreatment}
-                onChange={HandleChange}
-              ></input>
-              <label htmlFor="hairTreatment">Tratamento capilar</label>
-            </div>
-          </div>
-
-          <p>Selecione um de nossos profissionais</p>
-
-          <div>
-            <div className="inputs-solicitation">
-              <input
-                type={"radio"}
-                name="professional"
-                id="barber1"
-                value={"Rafa"}
-                onChange={HandleChange}
-              ></input>
-              <label htmlFor="barber1">Rafa</label>
+            <div
+              className="spinner-solicitation"
+              style={{ display: spinner ? "block" : "none" }}
+            >
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border text-danger" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
             </div>
 
-            <div className="inputs-solicitation">
-              <input
-                type={"radio"}
-                name="professional"
-                id="barber2"
-                value={"Duca"}
-                onChange={HandleChange}
-                required
-              ></input>
-              <label htmlFor="barber2">Duca</label>
+            <div className="button-solicitation">
+              <button
+                type="submit"
+                onClick={CheckOrder}
+                disabled={conditiom}
+                className="confirm-solicitation"
+              >
+                Confirmar
+              </button>
             </div>
-
-            <div className="inputs-solicitation">
-              <input
-                type={"radio"}
-                name="professional"
-                id="barber3"
-                value={"Cadú"}
-                onChange={HandleChange}
-                required
-              ></input>
-              <label htmlFor="barber3">Cadú</label>
-            </div>
-
-            <div className="inputs-solicitation">
-              <input
-                type={"radio"}
-                name="professional"
-                id="barber4"
-                value={"Léo"}
-                onChange={HandleChange}
-                required
-              ></input>
-              <label htmlFor="barber4">Léo</label>
-            </div>
-          </div>
-          <div className="button-solicitation">
-            <button type="submit" onClick={CheckOrder} disabled={conditiom} className="confirm-solicitation">
-              Confirmar
-            </button>
-          </div>
-          <p className="user-error">{error}</p>
-        </form>
+            <p className="user-error">{error}</p>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div>
+          <BiCheckCircle /> Pedido realizado com sucesso!
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Form;
