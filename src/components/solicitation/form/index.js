@@ -29,7 +29,7 @@ const Form = () => {
   const [errorSpan, setErrorSpan] = useState("");
   const [time, setTime] = useState([]);
   const [spinner, setSpinner] = useState(false);
-  const [alert, setAlert] = useState(false);
+  const [alertspinner, setAlertSpinner] = useState(false);
 
   const [fields, setFields] = useState({
     time: " ",
@@ -79,7 +79,7 @@ const Form = () => {
         user: id,
       });
 
-      setAlert(true);
+      setAlertSpinner(true);
 
       setTimeout(() => {
         setChecked(true);
@@ -163,7 +163,7 @@ const Form = () => {
     return boolean;
   }
 
-  if (!alert) {
+  if (!alertspinner) {
     return (
       
       <div className="container-solicitation">
