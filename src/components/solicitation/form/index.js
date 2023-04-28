@@ -237,7 +237,7 @@ const Form = () => {
     <div className="container-solicitation">
       <div className="form-content">
         <form className="form-solicitation" onSubmit={HandleSubmit}>
-          <p>Bem vindo, {localStorage.getItem("name")}</p>
+          <h2>Bem vindo, {localStorage.getItem("name")}</h2>
           <div className="logout"        >
             <button type="button" className="btn-logout" onClick={Logout}>
               Sair

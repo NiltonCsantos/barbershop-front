@@ -22,24 +22,26 @@
   background-color: #0000009a;
   box-shadow: 0px 0px 15px 0px #f7f5f544;
 }
-@media(max-width:460px){
+@media(max-width:600px){
   .form-content{
-    width: 95%;
+    width: 100vw;
   }
 }
 
 .form-solicitation {
   flex-direction: column;
   justify-content: center;
-  width: 400px;
-  padding: 1rem 2.5rem;
-  height: 99%;
+  width: 600px;
   background-color: #000000b0;
   box-shadow: 1px 2px 8px 1px #fffdfd2c;
-}@media(max-width:400px){
+}@media(max-width:600px){
  .form-solicitation{
   width: 100%;
  }
+}
+
+.form-solicitation>p{
+  font-size: 1.1rem;
 }
 
 .inputs-solicitation {
@@ -49,6 +51,9 @@
 .inputs-solicitation label {
   margin-left: 0.5rem;
 }
+/* .inputs-solicitation>input {
+  width: 1.2rem;
+} */
 
 .calendar {
   display: flex;
@@ -68,6 +73,7 @@
   align-items: center;
   justify-content: center;
   margin-top: -0.8rem;
+  /* font-size: 1.5rem; */
 }
 
 .unavailabletime{
@@ -90,7 +96,7 @@
   font-family: "bebas Neue", sans-serif;
 }
 .confirm-solicitation {
-  width: 6rem;
+  width: 7.5rem;
   background: none;
   border: 2px solid #9f6418;
   color: #ffffff;
