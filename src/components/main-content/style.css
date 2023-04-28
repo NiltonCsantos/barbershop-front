@@ -22,7 +22,8 @@
 }
 @media (max-width: 400px) {
   .main-content h1 {
-    font-size: 8rem;
+    margin-top: -6rem;
+    font-size: 8.5rem;
   }
 }
 .main-content h2 {
@@ -37,7 +38,7 @@
 }
 @media (max-width: 400px) {
   .main-content h2 {
-    font-size: 1.3rem;
+    font-size: 2.5rem;
   }
 }
 .main-content button {
@@ -60,7 +61,7 @@
 }
 @media (max-width: 400px) {
   .main-content button a {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 }
 

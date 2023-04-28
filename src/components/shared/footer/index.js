@@ -15,9 +15,9 @@ const Footer=()=>{
       <span id="about">
 
      
-      <p> <BiCopyright/>  2023- César</p>
+      <p style={{fontSize:"1.2rem"}}> <BiCopyright/>  2023- César</p>
 
-      <p>Todos os direitos reservados</p>
+      <p style={{fontSize:"1.1rem"}}>Todos os direitos reservados</p>
 
       
       </span>
