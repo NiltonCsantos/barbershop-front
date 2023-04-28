@@ -133,7 +133,7 @@ const Form = (props) => {
       <div className="content-form">
         <form onSubmit={HandleRegisterSubmite} className="form-login">
           <div className="login">
-            <h2>LOGIN</h2>
+          <h1>LOGIN</h1>
           </div>
 
           <div className="inputs">
@@ -189,7 +189,7 @@ const Form = (props) => {
       <div className="content-form">
         <form onSubmit={HandleLoginSubmite} className="form-login">
           <div className="login">
-            <h2>LOGIN</h2>
+            <h1>LOGIN</h1>
           </div>
 
           {span == true && (
