@@ -86,6 +86,9 @@ form .options>p>a {
 .login>h1 {
   color: #ffffff;
   font-size: 5rem;
+  text-align: center;
+  margin-top: -5rem;
+  margin-left: 1rem;
 }
 
 .inputs {
@@ -113,6 +116,7 @@ form .options>p>a {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 1.5rem;
 }
 
 .btn-class>button {
