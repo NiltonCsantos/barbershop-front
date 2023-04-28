@@ -121,12 +121,6 @@ const Form = (props) => {
     setConfirm(event.currentTarget.value);
   };
 
-  if (
-    localStorage.getItem("confirm") === "sim" &&
-    localStorage.getItem("token")
-  ) {
-    return <Navigate to={"/login/solicitation"} />;
-  }
 
   if (props.name) {
     return (
@@ -191,53 +185,6 @@ const Form = (props) => {
           <div className="login">
             <h1>LOGIN</h1>
           </div>
-
-          {span == true && (
-            <div
-              style={{
-                transition: "1s",
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "center",
-                backgroundColor: "#0000009a",
-                position: "fixed",
-                top: "0",
-                marginTop: "0.3rem",
-                width: "250px",
-                height: "80px",
-                boxShadow: " 0px 0px 15px 0px #f7f5f544",
-                padding: "1rem",
-              }}
-            >
-              Permanecer conectado?
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                  padding: "0.5rem",
-                }}
-              >
-                <input
-                  type="radio"
-                  style={{ cursor: "pointer", display: "none" }}
-                  name="choise"
-                  id="not"
-                  value={"nao"}
-                  onClick={HandleClick}
-                ></input>
-                <label htmlFor="not">Não</label>
-                <input
-                  type="radio"
-                  style={{ cursor: "pointer", display: "none" }}
-                  id="yes"
-                  name="choise"
-                  value={"sim"}
-                  onClick={HandleClick}
-                ></input>
-                <label htmlFor="yes">Sim</label>
-              </div>
-            </div>
-          )}
 
           <div className="inputs">
             <label htmlFor="email">Email:</label>

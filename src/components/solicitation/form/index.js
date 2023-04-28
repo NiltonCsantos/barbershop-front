@@ -78,7 +78,6 @@ const Form = () => {
   const [checkHairTreatment, setCheckHairTreatment] = useState(false);
   const [errorSpan, setErrorSpan] = useState("");
   const [time, setTime] = useState([]);
-  const [logout, setLogout] = useState(false);
 
   const [fields, setFields] = useState({
     time: " ",
@@ -224,26 +223,11 @@ const Form = () => {
     console.log(color);
   }
 
-  const Logout = () => {
-    localStorage.removeItem("confirm");
-    setLogout(true);
-  };
-
-  if (logout == true) {
-    return <Navigate to={"/login"} />;
-  }
-
   return (
     <div className="container-solicitation">
       <div className="form-content">
         <form className="form-solicitation" onSubmit={HandleSubmit}>
           <h2>Bem vindo, {localStorage.getItem("name")}</h2>
-          <div className="logout"        >
-            <button type="button" className="btn-logout" onClick={Logout}>
-              Sair
-            </button>
-          </div>
-
           <p>Agendar Dia</p>
           <div className="calendar">
             <input
