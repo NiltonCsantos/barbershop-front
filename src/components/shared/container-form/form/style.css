@@ -126,6 +126,7 @@ form .options>p>a {
   border: 2px solid #9f6418;
   color: #ffffff;
   padding: 0.2rem;
+
   border-radius: 1rem;
   letter-spacing: 3px;
   font-family: "bebas Neue", sans-serif;
@@ -152,4 +153,10 @@ a:hover {
   .user-error {
     width: 100%;
   }
+}
+.spinner{
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  margin-left: 1.5rem;
 }

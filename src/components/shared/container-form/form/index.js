@@ -22,22 +22,26 @@ const Form = (props) => {
   const [messageEmailRegister, setMessageEmailRegister] = useState("");
   const [messaPasswordRegister, setMessaPasswordRegister] = useState("");
   const [span, setSpan] = useState(false);
- 
+  const [spinner, setSpinner] = useState(false);
 
   if (redirectToLogin) {
     return <Navigate to={"/login"} />;
   }
 
   if (redirectToSolicitation) {
-  
-      return <Navigate to={"/login/solicitation"} />;
-
+    return <Navigate to={"/login/solicitation"} />;
   }
 
   if (error) {
     setTimeout(() => {
       setError(false);
     }, 4000);
+  }
+
+  if(errorUser.length>1){
+    setTimeout(()=>{
+      setErrorUser("");
+    }, 3000)
   }
 
   const HandleChange = (event) => {
@@ -81,6 +85,8 @@ const Form = (props) => {
   const HandleLoginSubmite = async (ev) => {
     ev.preventDefault();
 
+    setSpinner(true);
+
     try {
       if (
         fields.email.match(/\w{2,}@[g][m][a][i][l]\.[c][o][m]/) ||
@@ -110,17 +116,17 @@ const Form = (props) => {
       }
     } catch (error) {
       setErrorUser(error.response.data);
-      console.log(error.response.data);
+      setSpinner(false);
     }
   };
 
-
+  
   if (props.name) {
     return (
       <div className="content-form">
         <form onSubmit={HandleRegisterSubmite} className="form-login">
           <div className="login">
-          <h1>LOGIN</h1>
+            <h1>LOGIN</h1>
           </div>
 
           <div className="inputs">
@@ -145,7 +151,14 @@ const Form = (props) => {
               required
             ></input>
           </div>
-          <p className="user-error" style={{display: messaPasswordRegister.length>1? "block": "none"}}>{messageEmailRegister}</p>
+          <p
+            className="user-error"
+            style={{
+              display: messaPasswordRegister.length > 1 ? "block" : "none",
+            }}
+          >
+            {messageEmailRegister}
+          </p>
           <div className="inputs">
             <label htmlFor="password">Senha: </label>
             <input
@@ -178,7 +191,7 @@ const Form = (props) => {
           <div className="login">
             <h1>LOGIN</h1>
           </div>
-          
+
           <div className="inputs">
             <label htmlFor="email">Email:</label>
             <input
@@ -212,6 +225,14 @@ const Form = (props) => {
           </div>
           <div className="user-error">
             <p>{errorUser}</p>
+          </div>
+
+          <div className="spinner" style={{display:spinner?"block": "none"}}>
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
           </div>
           <Buttom name="Entrar"></Buttom>
         </form>
