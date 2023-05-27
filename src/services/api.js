@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "https://barbershop-api-2vva.onrender.com",
+  baseURL: "https://barbershop-api-production.up.railway.app",
 });
 
 export default Api;

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import "./style.css";
 import userService from "../../../services/users";
-import { BiCheckCircle } from "react-icons/bi";
+  import { BiCheckCircle } from "react-icons/bi";
 
 const Form = () => {
   const date = new Date();
