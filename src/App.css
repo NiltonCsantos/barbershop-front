@@ -8,149 +8,118 @@
 }
 .container-form .content-form {
   height: 90vh;
-  width: 70%;
+  width: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.6039215686);
   box-shadow: 0px 0px 15px 0px rgba(247, 245, 245, 0.2666666667);
-}
-@media (max-width: 600px) {
-  .container-form .content-form {
-    width: 100vw;
-    height: 100vh;
-  }
+  font-size: 1.2rem;
 }
 .container-form .form-login {
   font-family: "Bebas Neue", sans-serif;
   display: flex;
   letter-spacing: 3px;
-  padding: 0rem 3rem;
   flex-direction: column;
   color: white;
-  background-color: rgba(0, 0, 0, 0.6901960784);
-  padding: 3rem;
+  border-color: #9f6418;
   box-shadow: 1px 2px 8px 1px rgba(255, 253, 253, 0.1725490196);
-  min-width: 320px;
+  width: 95%;
   height: 95%;
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 600px) {
-  .container-form .form-login {
-    width: 100vw;
+.container-form .form-login .login {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.container-form .form-login .login h1 {
+  color: #ffffff;
+  font-size: 3.5rem;
+  text-align: center;
+}
+.container-form .form-login .inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+  padding: 1rem 0rem 0rem 0rem;
+}
+.container-form .form-login .inputs .email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  min-width: 280px;
+}
+.container-form .form-login .inputs .password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  min-width: 280px;
+}
+.container-form .form-login input {
+  width: 100%;
+}
+@media (max-width: 460px) {
+  .container-form .form-login input {
+    width: 100%;
   }
 }
-.container-form form .options {
+.container-form .form-login .options {
   font-family: "Bebas Neue", sans-serif;
   margin: 1rem 0rem;
   font-weight: 100;
   display: flex;
-  font-size: 0.9rem;
-  justify-content: space-between;
-  width: 280px;
+  font-size: 1rem;
+  justify-content: space-around;
+  width: 100%;
 }
-@media (max-width: 600px) {
-  .container-form form .options {
-    width: 90vw;
-    justify-content: space-around;
-    font-size: 1.2rem;
-  }
-}
-@media (max-width: 370px) {
-  .container-form form .options {
-    gap: 0.1rem;
-    width: 100vw;
-  }
-}
-@media (max-width: 312px) {
-  .container-form form .options {
-    flex-direction: column-reverse;
-    gap: 1rem;
-  }
-}
-.container-form .message-error {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #9f6418;
-}
-.container-form form .options > p > a {
+.container-form .form-login .options p > a {
   text-decoration: none;
   color: #ffffff;
 }
-.container-form .login {
-  display: flex;
-  margin-bottom: 2rem;
-  justify-content: center;
-  align-items: center;
+.container-form .form-login .options p > a:hover {
+  color: #9f6418;
+  transition: 0.3s;
 }
-.container-form .login > h1 {
-  color: #ffffff;
-  font-size: 5rem;
-  text-align: center;
+.container-form .form-login .message-error {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #9f6418;
 }
-.container-form .inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 300px;
-  align-items: center;
-  padding: 1rem 0rem 0rem 0rem;
-}
-.container-form .inputs input {
-  width: 220px;
-}
-@media (max-width: 460px) {
-  .container-form .inputs input {
-    width: 100%;
-  }
-}
-.container-form .inputs > label {
-  font-size: 1.5rem;
-}
-.container-form .btn-class {
+.container-form .form-login .btn-class {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1.5rem;
+  min-width: 100%;
 }
-.container-form .btn-class > button {
-  width: 7.4rem;
+.container-form .form-login .btn-class button {
+  width: 5.5rem;
   font-size: 1.5rem;
   background: none;
   border: 2px solid #9f6418;
   color: #ffffff;
-  padding: 0.2rem;
   border-radius: 1rem;
-  letter-spacing: 3px;
   font-family: "bebas Neue", sans-serif;
 }
-.container-form button:hover {
+.container-form .form-login .btn-class button:hover {
   color: #9f6418;
   transition: 0.3s;
   cursor: pointer;
 }
-.container-form a:hover {
-  color: #9f6418;
-  transition: 0.3s;
-}
-.container-form .user-error {
+.container-form .form-login .user-error {
   width: 300px;
   color: #9f6418;
   font-size: 1rem;
   margin-top: 0.5rem;
 }
-@media (max-width: 360px) {
-  .container-form .user-error {
-    width: 100%;
-  }
-}
-.container-form .spinner {
+.container-form .form-login .spinner {
   margin-bottom: 1rem;
   width: 100%;
-  margin-left: 1.5rem;
-}
-.container-form .spinner-solicitation {
-  margin-bottom: 2rem;
 }
 
 #container {

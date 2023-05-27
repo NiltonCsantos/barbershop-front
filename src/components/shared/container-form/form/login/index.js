@@ -59,10 +59,22 @@ const FormLogin = () => {
         }
       } else {
         setMessageEmailLogin("Email inválido");
+        setTimeout(()=>{
+
+          setMessageEmailLogin("");
+  
+        },4000)
       }
     } catch (error) {
       setErrorUser(error.response.data);
       setSpinner(false);
+
+      setTimeout(()=>{
+
+        setErrorUser("");
+
+      },4000)
+
     }
   };
 
@@ -73,11 +85,11 @@ const FormLogin = () => {
           <h1>LOGIN</h1>
         </div>
 
-        <p className="user-error">{messageEmailLogin}</p>
+        
         <div className="inputs">
           
           <div className="email">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email: </label>
             <input
               type={"email"}
               id="email"
@@ -89,7 +101,7 @@ const FormLogin = () => {
           </div>
 
           <div className="password">
-          <label htmlFor="password">Senha:</label>
+          <label htmlFor="password">Senha: </label>
           <input
             type={"password"}
             id="password"
@@ -111,6 +123,7 @@ const FormLogin = () => {
         </div>
         <div className="user-error">
           <p>{errorUser}</p>
+          <p>{messageEmailLogin}</p>
         </div>
 
         <div
@@ -123,7 +136,10 @@ const FormLogin = () => {
             </div>
           </div>
         </div>
+        <div className="btn-class">
         <button>Entrar</button>
+        </div>
+      
       </form>
     </div>
   );
