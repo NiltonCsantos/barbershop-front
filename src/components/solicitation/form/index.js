@@ -2,7 +2,6 @@ import React from "react";
 
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import "./style.css";
 import userService from "../../../services/users";
   import { BiCheckCircle } from "react-icons/bi";
 

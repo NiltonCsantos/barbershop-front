@@ -1,8 +1,6 @@
 import React from "react";
 
-import "./style.css"
-
-import MainContent from "../main-content";
+import MainContent from "./main-content";
 
 const CoverMainContent=()=>{
 

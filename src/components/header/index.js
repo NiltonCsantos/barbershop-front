@@ -1,15 +1,11 @@
-import {React, useRef, useState, useEffect} from "react";
-
-import "./style.css"
+import {React, useState, useEffect} from "react";
 
 import Logo from "./logo";
 
 import Ul from "./ul";
 
-
 const Header = () => {
 
-  
     const [color, setColor] = useState("");
   
     useEffect(() => {

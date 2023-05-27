@@ -3,9 +3,6 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import UsersService from "../../../../services/users";
 
-import "./style.css";
-
-import Buttom from "./buttom";
 
 const Form = (props) => {
   const [fields, setfields] = useState({
@@ -82,170 +79,80 @@ const Form = (props) => {
     }
   };
 
-  const HandleLoginSubmite = async (ev) => {
-    ev.preventDefault();
-
-    try {
-      if (
-        fields.email.match(/\w{2,}@[g][m][a][i][l]\.[c][o][m]/) ||
-        fields.email.match(/\w{2,}@[o][u][t][l][o][o][k]\.[c][o][m]/)
-      ) {
-        setMessageEmailLogin("");
-
-        setSpinner(true);
-
-        const user = await UsersService.login({
-          email: fields.email,
-          password: fields.password,
-        });
-        const name = user.data.name;
-        const token = user.data.token;
-
-        localStorage.setItem("id", user.data.id);
-        localStorage.setItem("name", name);
-        localStorage.setItem("token", token);
-
-        if (user.data.token.match(token)) {
-          setRedirectToSolicitation(true);
-        }
-        if (fields.password.length >= 8) {
-          setSpan(true);
-        }
-      } else {
-        setMessageEmailLogin("Email inválido");
-      }
-    } catch (error) {
-      setErrorUser(error.response.data);
-      setSpinner(false);
-    }
-  };
+ 
 
   
-  if (props.name) {
+
     return (
       <div className="content-form">
-        <form onSubmit={HandleRegisterSubmite} className="form-login">
-          <div className="login">
-            <h1>LOGIN</h1>
-          </div>
+      <form onSubmit={HandleRegisterSubmite} className="form-login">
+        <div className="login">
+          <h1>LOGIN</h1>
+        </div>
 
-          <div className="inputs">
-            <label htmlFor="name">Nome:</label>
-            <input
-              type={"text"}
-              id="name"
-              name="name"
-              value={fields.name}
-              onChange={HandleChange}
-              required
-            ></input>
-          </div>
-          <div className="inputs">
-            <label htmlFor="email">Email: </label>
-            <input
-              type={"email"}
-              id="email"
-              name="email"
-              value={fields.email}
-              onChange={HandleChange}
-              required
-            ></input>
-          </div>
-          <p
-            className="user-error"
-            style={{
-              display: messageEmailRegister.length > 1 ? "block" : "none",
-            }}
-          >
-            {messageEmailRegister}
-          </p>
-          <div className="inputs">
-            <label htmlFor="password">Senha: </label>
-            <input
-              type={"password"}
-              id="password"
-              name="password"
-              value={fields.password}
-              required
-              onChange={HandleChange}
-            ></input>
-          </div>
-          <div className="spinner" style={{display:spinner?"block": "none"}}>
-            <div class="d-flex justify-content-center">
-              <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
+        <div className="inputs">
+          <label htmlFor="name">Nome:</label>
+          <input
+            type={"text"}
+            id="name"
+            name="name"
+            value={fields.name}
+            onChange={HandleChange}
+            required
+          ></input>
+        </div>
+        <div className="inputs">
+          <label htmlFor="email">Email: </label>
+          <input
+            type={"email"}
+            id="email"
+            name="email"
+            value={fields.email}
+            onChange={HandleChange}
+            required
+          ></input>
+        </div>
+        <p
+          className="user-error"
+          style={{
+            display: messageEmailRegister.length > 1 ? "block" : "none",
+          }}
+        >
+          {messageEmailRegister}
+        </p>
+        <div className="inputs">
+          <label htmlFor="password">Senha: </label>
+          <input
+            type={"password"}
+            id="password"
+            name="password"
+            value={fields.password}
+            required
+            onChange={HandleChange}
+          ></input>
+        </div>
+        <div className="spinner" style={{display:spinner?"block": "none"}}>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
             </div>
           </div>
-          <p className="user-error">{messaPasswordRegister}</p>
-          <div className="options">
-            <div className="btn-class">
-              <button type="button">
-                <Link to={"/login"}>Voltar</Link>
-              </button>
-            </div>
-
-            <Buttom name="Confirmar" />
+        </div>
+        <p className="user-error">{messaPasswordRegister}</p>
+        <div className="options">
+          <div className="btn-class">
+            <button type="button">
+              <Link to={"/login"}>Voltar</Link>
+            </button>
           </div>
-          {error && <p className="message-error">Esse usuário já existe</p>}
-        </form>
-      </div>
+
+         <button>Confirmar</button>
+        </div>
+        {error && <p className="message-error">Esse usuário já existe</p>}
+      </form>
+    </div>
     );
-  } else {
-    return (
-      <div className="content-form">
-        <form onSubmit={HandleLoginSubmite} className="form-login">
-          <div className="login">
-            <h1>LOGIN</h1>
-          </div>
-
-          <div className="inputs">
-            <label htmlFor="email">Email:</label>
-            <input
-              type={"email"}
-              id="email"
-              name="email"
-              value={fields.email}
-              onChange={HandleChange}
-              required
-            ></input>
-          </div>
-          <p className="user-error">{messageEmailLogin}</p>
-          <div className="inputs">
-            <label htmlFor="password">Senha:</label>
-            <input
-              type={"password"}
-              id="password"
-              name="password"
-              value={fields.password}
-              onChange={HandleChange}
-              required
-            ></input>
-          </div>
-          <div className="options">
-            <p>
-              <Link to={"/login/forgetpassword"}>Esqueceu a senha?</Link>
-            </p>
-            <p>
-              <Link to={"/register"}>Cadastre-se</Link>
-            </p>
-          </div>
-          <div className="user-error">
-            <p>{errorUser}</p>
-          </div>
-
-          <div className="spinner" style={{display:spinner?"block": "none"}}>
-            <div class="d-flex justify-content-center">
-              <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          </div>
-          <Buttom name="Entrar"></Buttom>
-        </form>
-      </div>
-    );
-  }
+  
 };
 
 export default Form;

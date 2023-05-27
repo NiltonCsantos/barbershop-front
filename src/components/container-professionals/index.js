@@ -1,8 +1,4 @@
-import React from "react";
-
 import Professionals from "./professionals";
-
-import "./style.css"
 
 const ContainerProfessionals=()=>{
 

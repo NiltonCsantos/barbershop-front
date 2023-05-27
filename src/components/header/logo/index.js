@@ -1,16 +1,14 @@
 import React from "react";
 
-import Src from "./image/logo.png"
-
-import { Navigate } from "react-router-dom";
-
+import LogoBarber from "../../../images/logo.png"
 
 const Logo=()=>{
 
   return(
 
+    <a href="#home"> <img src={LogoBarber} className="img-header"></img></a>
     
-    <img src={Src} className="img-header"></img>
+   
 
   )
 

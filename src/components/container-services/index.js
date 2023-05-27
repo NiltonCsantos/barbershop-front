@@ -1,8 +1,4 @@
-import React from "react";
-
 import Services from "./services";
-
-import "./style.css"
 
 const ContainerServices=()=>{
 

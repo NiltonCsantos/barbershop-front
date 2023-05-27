@@ -1,13 +1,11 @@
 import React from "react";
 
-import Form from "./form";
-
-import "./style.css"
+import FormLogin from "./form/login";
 
 const ContainerForm = (props) => {
   return (
     <div className="container-form">
-      <Form name={props.name} />
+      <FormLogin/>
     </div>
   );
 };

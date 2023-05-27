@@ -4,7 +4,6 @@ import Cover from "../cover";
 import ContainerServices from "../container-services";
 import ContainerProfessionals from "../container-professionals";
 import Aside from "../shared/aside";
-import "./style.css";
 
 const Container = () => {
   return (

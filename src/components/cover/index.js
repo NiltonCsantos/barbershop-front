@@ -4,8 +4,6 @@ import Header from "../header";
 
 import CoverMainContent from "../container-main-content";
 
-import "./style.css";
-
 const Cover=()=>{
 
   const [style, setStyle]=useState(

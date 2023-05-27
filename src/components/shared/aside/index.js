@@ -1,8 +1,4 @@
-import React from "react";
-
 import Footer from "../footer";
-
-import "./style.css"
 
 const Aside=()=>{
 

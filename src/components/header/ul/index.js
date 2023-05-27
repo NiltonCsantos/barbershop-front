@@ -1,5 +1,3 @@
-import React from "react";
-
 import Li from "./li";
 
 const Ul=()=>{
