@@ -31,7 +31,7 @@ const Form = () => {
     professional:[]
   });
   const [spinner, setSpinner] = useState(false);
-  const [alertspinner, setAlertSpinner] = useState(true);
+  const [alertspinner, setAlertSpinner] = useState(false);
 
   const [fields, setFields] = useState({
     time: " ",

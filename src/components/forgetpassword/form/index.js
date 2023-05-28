@@ -8,7 +8,7 @@ const FormPassword = () => {
   });
   const [message, setMessage] = useState("");
   const [confirm, setConfirm]=useState(false);
-  const [spinner, setSpinner] = useState(false);
+  const [spinner, setSpinner] = useState(true);
   
     if(confirm){
       return <Navigate to={"/login/forgetpassword/acesscode"}/>
@@ -95,8 +95,11 @@ const FormPassword = () => {
           </div>
         </div>
         <p className="user-error">{message}</p>
-        <div className="spinner" style={{display:spinner?"block": "none"}}>
-            <div Name="d-flex justify-content-center">
+        <div
+            className="spinner"
+            style={{ display: spinner ? "block" : "none" }}
+          >
+            <div className="d-flex justify-content-center">
               <div className="spinner-border text-danger" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
