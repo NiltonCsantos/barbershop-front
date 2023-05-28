@@ -26,7 +26,10 @@ const Form = () => {
   const [checkEyebrow, setCheckEyebrow] = useState(false);
   const [checkHairTreatment, setCheckHairTreatment] = useState(false);
   const [errorSpan, setErrorSpan] = useState("");
-  const [time, setTime] = useState([]);
+  const [time, setTime] = useState({
+    hours:[],
+    professional:[]
+  });
   const [spinner, setSpinner] = useState(false);
   const [alertspinner, setAlertSpinner] = useState(false);
 
@@ -70,7 +73,8 @@ const Form = () => {
       const id = localStorage.getItem("id");
 
       const order = `${fields.hair} ${fields.barb} ${fields.eyebrow} ${fields.hairTreatment}`;
-      await userService.solicitaton({
+
+      const response=await userService.solicitaton({
         time: fields.time,
         solicitation: order,
         date: fields.date,
@@ -78,11 +82,16 @@ const Form = () => {
         user: id,
       });
 
-      setAlertSpinner(true);
+    
+
+      if(response){
+        console.log(response);
+        setAlertSpinner(true);
+      }
 
       setTimeout(() => {
         setChecked(true);
-      }, 5000);
+      }, 3000);
     } catch (error) {
       setError(error.response.data);
       setSpinner(false);
@@ -98,6 +107,7 @@ const Form = () => {
     const response = await userService.solicitatonPostDate({
       date: fields.date,
     });
+
 
     const listTime = response.data;
 
@@ -124,6 +134,8 @@ const Form = () => {
     }
 
     setTime(listTime);
+
+   
   };
 
   const CheckOrder = () => {
@@ -162,15 +174,22 @@ const Form = () => {
   };
 
   function checkTime(hours) {
-    const boolean = time.find((element) => {
-      if (element.match(hours)) {
+
+
+    const timeList=time.hours;
+
+    const professionalList=time.professional;
+
+    for (let i = 0; i < timeList.length; i++) {
+      
+      if(timeList[i].match(hours) && professionalList[i].match(fields.professional)){
         return true;
-      } else {
+      }else{
         return false;
       }
-    });
-
-    return boolean;
+      
+    }
+   
   }
 
   if (!alertspinner) {
