@@ -26,8 +26,8 @@ const Li= ()=>{
       <li>  <a href="#services" id="options-header">Serviços</a> </li>
       <li> <a href="#professionals" id="options-header">Profissionais</a>  </li>
       <li> <a href="#about" id="options-header">Sobre</a> </li>
-      <li> <a href="#" id="options-header"><FaWhatsapp/></a> </li>
-      <li> <a href="#" id="options-header"><FaInstagram/></a> </li>
+      <li> <a href="https://api.whatsapp.com/send?phone=5579996817729&text=Ol%C3%A1,%20C%C3%A9sar.%20Gostaria%20de%20entrar%20em%20contato%20com%20voc%C3%AA." target="_blank" rel="external" id="options-header"><FaWhatsapp/></a> </li>
+      <li> <a href="https://www.instagram.com/cesar____16/" target="_blank" rel="extenal" id="options-header"><FaInstagram/></a> </li>
       <li> <a href="#" id="options-header"><FaTiktok/></a> </li>
       <li> <a href="#" id="options-header"> <FaMapMarkerAlt/>  </a> </li>
    
@@ -51,15 +51,15 @@ const Li= ()=>{
         
           <ul className="menu-options">
 
-          <li  onClick={click}> <a href="#home">Home</a> </li>
-          <li onClick={click}>  <a href="#services">Serviços</a> </li>
-          <li onClick={click}> <a href="#professionals">Profissionais</a>  </li>
-          <li onClick={click}> <a href="#about">Sobre</a> </li>
+          <li > <a href="#home"onClick={click}>Home</a> </li>
+          <li>  <a href="#services"onClick={click}>Serviços</a> </li>
+          <li> <a href="#professionals"onClick={click}>Profissionais</a>  </li>
+          <li> <a href="#about"onClick={click}>Sobre</a> </li>
           <div className="social-newtworks">
-          <li onClick={click}> <a href="#"><FaWhatsapp/></a> </li>
-          <li onClick={click}> <a href="#"><FaInstagram/></a> </li>
-          <li onClick={click}> <a href="#"><FaTiktok/></a> </li>
-          <li onClick={click}> <a href="#"> <FaMapMarkerAlt/>  </a> </li>
+          <li> <a href="https://api.whatsapp.com/send?phone=5579996817729&text=Ol%C3%A1,%20C%C3%A9sar.%20Gostaria%20de%20entrar%20em%20contato%20com%20voc%C3%AA." target="_blank" rel="external"><FaWhatsapp/></a> </li>
+          <li> <a href="https://www.instagram.com/cesar____16/" target="_blank" rel="extenal"><FaInstagram/></a> </li>
+          <li> <a href="#"><FaTiktok/></a> </li>
+          <li> <a href="#"> <FaMapMarkerAlt/>  </a> </li>
         </div>
 
         </ul>
