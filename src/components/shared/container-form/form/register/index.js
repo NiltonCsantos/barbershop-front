@@ -11,27 +11,20 @@ const FormRegister = (props) => {
   });
 
   const [redirectToLogin, setRedirectToLogin] = useState(false);
-  const [redirectToSolicitation, setRedirectToSolicitation] = useState(false);
   const [error, setError] = useState(false);
   const [errorUser, setErrorUser] = useState("");
-  const [messageEmailLogin, setMessageEmailLogin] = useState("");
   const [messageEmailRegister, setMessageEmailRegister] = useState("");
   const [messaPasswordRegister, setMessaPasswordRegister] = useState("");
-  const [span, setSpan] = useState(false);
   const [spinner, setSpinner] = useState(false);
 
   if (redirectToLogin) {
     return <Navigate to={"/login"} />;
   }
 
-  if (redirectToSolicitation) {
-    return <Navigate to={"/login/solicitation"} />;
-  }
-
   if (error) {
     setTimeout(() => {
       setError(false);
-    }, 4000);
+    }, 3000);
   }
 
   if (errorUser.length > 1) {
@@ -67,9 +60,17 @@ const FormRegister = (props) => {
           setRedirectToLogin(true);
         } else {
           setMessaPasswordRegister("A senha deve possuir 8 caracters ou mais");
+          setSpinner(false);
+          setTimeout(() => {
+            setMessaPasswordRegister("");
+          }, 3000);
         }
       } else {
         setMessageEmailRegister("Email inválido");
+        setSpinner(false);
+        setTimeout(() => {
+          setMessageEmailRegister("");
+        }, 3000);
       }
     } catch (error) {
       setError(true);
@@ -79,7 +80,7 @@ const FormRegister = (props) => {
 
   return (
     <div className="content-form">
-      <form onSubmit={HandleRegisterSubmite} className="form-login">
+      <form onSubmit={HandleRegisterSubmite} className="form-register">
         <div className="login">
           <h1>LOGIN</h1>
         </div>
@@ -143,13 +144,14 @@ const FormRegister = (props) => {
           </div>
         </div>
         <p className="user-error">{messaPasswordRegister}</p>
+        {error && <p className="message-error">Esse usuário já existe</p>}
         <div className="options-btn">
      
             <Link to={"/login"} className="back">Voltar</Link>
 
             <button>Confirmar</button>
         </div>
-        {error && <p className="message-error">Esse usuário já existe</p>}
+      
       </form>
     </div>
   );

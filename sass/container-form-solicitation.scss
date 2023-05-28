@@ -1,0 +1,95 @@
+@import "./variables/color.scss";
+
+.container-solicitation {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../src/images/cover.png) no-repeat no-repeat;
+  background-size: cover;
+
+  .content-form {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primaryColor;
+    box-shadow: 0px 0px 15px 0px #f7f5f544;
+    font-size: 1.5rem;
+    color: $secundaryColor;
+    font-family: "Bebas Neue", sans-serif;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+
+    .form-solicitation {
+      display: flex;
+      letter-spacing: 3px;
+      flex-direction: column;
+      color: $secundaryColor;
+      border-color: $tertyareColor;
+      box-shadow: 1px 2px 8px 1px #fffdfd2c;
+      width: 95%;
+      height: 95%;
+      padding: 1rem;
+
+      .inputs-solicitation {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        .barb,
+        .hair,
+        .eyebrow,
+        .hairTreatment,
+        .barber1,
+        .barber2,
+        .barber3,
+        .barber4 {
+          display: flex;
+          gap: 1.2rem;
+
+          input {
+            width: 1.5rem;
+          }
+          
+        }
+
+       
+      }
+
+      .user-error{
+        color: $tertyareColor;
+        font-size: 1.05rem;
+      }
+    }
+
+    .calendar {
+      margin-bottom: 1.5rem;
+    }
+
+    .button-solicitation{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100%;
+
+      button {
+        width: 6.5rem;
+        font-size: 1.5rem;
+        background: none;
+        border: 2px solid $tertyareColor;
+        color: $secundaryColor;
+        border-radius: 1rem;
+        font-family: "bebas Neue", sans-serif;
+
+        &:hover {
+          color: $tertyareColor;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+}

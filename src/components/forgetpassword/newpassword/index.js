@@ -111,9 +111,9 @@ const NewPassword = () => {
          
             <p className="user-error">{error}</p>
             <div className="spinner" style={{display:spinner?"block": "none"}}>
-              <div class="d-flex justify-content-center">
-                <div class="spinner-border text-danger" role="status">
-                  <span class="visually-hidden">Loading...</span>
+              <div className="d-flex justify-content-center">
+                <div className="spinner-border text-danger" role="status">
+                  <span className="visually-hidden">Loading...</span>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@ const NewPassword = () => {
     );
   }else{
     return(
-      <div class="alert alert-success d-flex align-items-center" role="alert">
+      <div className="alert alert-success d-flex align-items-center" role="alert">
       <div>
         <BiCheckCircle /> Senha alterada com sucesso!
       </div>

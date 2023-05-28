@@ -72,9 +72,9 @@ const AcessCode = () => {
             className="spinner"
             style={{ display: spinner ? "block" : "none" }}
           >
-            <div class="d-flex justify-content-center">
-              <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <div className="d-flex justify-content-center">
+              <div className="spinner-border text-danger" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
             </div>
           </div>

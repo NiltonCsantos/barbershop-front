@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import UsersService from "../../../../../services/users";
+import { Navigate } from "react-router-dom";
 
 const FormLogin = () => {
-  const [redirectToLogin, setRedirectToLogin] = useState(false);
   const [redirectToSolicitation, setRedirectToSolicitation] = useState(false);
   const [error, setError] = useState(false);
   const [errorUser, setErrorUser] = useState("");
@@ -26,10 +26,16 @@ const FormLogin = () => {
     });
   };
 
+  if (redirectToSolicitation) {
+    return <Navigate to={"/login/solicitation"} />;
+  }
+
+
   const HandleLoginSubmite = async (ev) => {
     ev.preventDefault();
 
     try {
+
       if (
         fields.email.match(/\w{2,}@[g][m][a][i][l]\.[c][o][m]/) ||
         fields.email.match(/\w{2,}@[o][u][t][l][o][o][k]\.[c][o][m]/)
