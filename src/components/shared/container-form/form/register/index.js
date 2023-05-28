@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import UsersService from "../../../../services/users";
+import UsersService from "../../../../../services/users";
 
-
-const Form = (props) => {
+const FormRegister = (props) => {
   const [fields, setfields] = useState({
     name: "",
     email: "",
@@ -35,10 +34,10 @@ const Form = (props) => {
     }, 4000);
   }
 
-  if(errorUser.length>1){
-    setTimeout(()=>{
+  if (errorUser.length > 1) {
+    setTimeout(() => {
       setErrorUser("");
-    }, 3000)
+    }, 3000);
   }
 
   const HandleChange = (event) => {
@@ -57,7 +56,6 @@ const Form = (props) => {
         fields.email.match(/\w{2,}@[g][m][a][i][l]\.[c][o][m]/) ||
         fields.email.match(/\w{2,}@[o][u][t][l][o][o][k]\.[c][o][m]/)
       ) {
-
         if (fields.password.length >= 8) {
           setMessaPasswordRegister(" ");
           const user = await UsersService.register({
@@ -79,18 +77,16 @@ const Form = (props) => {
     }
   };
 
- 
-
-  
-
-    return (
-      <div className="content-form">
+  return (
+    <div className="content-form">
       <form onSubmit={HandleRegisterSubmite} className="form-login">
         <div className="login">
           <h1>LOGIN</h1>
         </div>
 
         <div className="inputs">
+
+          <div className="name">
           <label htmlFor="name">Nome:</label>
           <input
             type={"text"}
@@ -100,27 +96,21 @@ const Form = (props) => {
             onChange={HandleChange}
             required
           ></input>
-        </div>
-        <div className="inputs">
-          <label htmlFor="email">Email: </label>
-          <input
-            type={"email"}
-            id="email"
-            name="email"
-            value={fields.email}
-            onChange={HandleChange}
-            required
-          ></input>
-        </div>
-        <p
-          className="user-error"
-          style={{
-            display: messageEmailRegister.length > 1 ? "block" : "none",
-          }}
-        >
-          {messageEmailRegister}
-        </p>
-        <div className="inputs">
+          </div>
+          
+
+          <div className="email">
+            <label htmlFor="email">Email: </label>
+            <input
+              type={"email"}
+              id="email"
+              name="email"
+              value={fields.email}
+              onChange={HandleChange}
+              required
+            ></input>
+          </div>
+          <div className="password">
           <label htmlFor="password">Senha: </label>
           <input
             type={"password"}
@@ -130,29 +120,39 @@ const Form = (props) => {
             required
             onChange={HandleChange}
           ></input>
+          </div>
         </div>
-        <div className="spinner" style={{display:spinner?"block": "none"}}>
-          <div class="d-flex justify-content-center">
-            <div class="spinner-border text-danger" role="status">
-              <span class="visually-hidden">Loading...</span>
+
+        <p
+          className="user-error"
+          style={{
+            display: messageEmailRegister.length > 1 ? "block" : "none",
+          }}
+        >
+          {messageEmailRegister}
+        </p>
+
+        <div
+          className="spinner"
+          style={{ display: spinner ? "block" : "none" }}
+        >
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border text-danger" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         </div>
         <p className="user-error">{messaPasswordRegister}</p>
-        <div className="options">
-          <div className="btn-class">
-            <button type="button">
-              <Link to={"/login"}>Voltar</Link>
-            </button>
-          </div>
+        <div className="options-btn">
+     
+            <Link to={"/login"} className="back">Voltar</Link>
 
-         <button>Confirmar</button>
+            <button>Confirmar</button>
         </div>
         {error && <p className="message-error">Esse usuário já existe</p>}
       </form>
     </div>
-    );
-  
+  );
 };
 
-export default Form;
+export default FormRegister;

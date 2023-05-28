@@ -78,11 +78,12 @@ const FormPassword = () => {
 
   return (
     <div className="content-form">
-      <form onSubmit={HandleSubmit} className="form-login">
+      <form onSubmit={HandleSubmit} className="form-forget-password">
         <div className="login">
           <h1>LOGIN</h1>
         </div>
         <div className="inputs">
+          <div className="email">
           <label htmlFor="email">Email:</label>
           <input
             type={"email"}
@@ -91,6 +92,7 @@ const FormPassword = () => {
             required
             onChange={HandleChange}
           ></input>
+          </div>
         </div>
         <p className="user-error">{message}</p>
         <div className="spinner" style={{display:spinner?"block": "none"}}>
@@ -100,10 +102,10 @@ const FormPassword = () => {
               </div>
             </div>
           </div>
-        <div className="btn-forget">
-          <button type="button">
+        <div className="options-btn">
+     
             <Link to={"/login"}>Voltar</Link>
-          </button>
+         
           <button type="submit">Confirmar</button>
         </div>
       </form>

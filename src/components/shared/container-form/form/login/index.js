@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
 import UsersService from "../../../../../services/users";
-import { within } from "@testing-library/react";
 
 const FormLogin = () => {
   const [redirectToLogin, setRedirectToLogin] = useState(false);
@@ -103,7 +101,7 @@ const FormLogin = () => {
           <div className="password">
           <label htmlFor="password">Senha: </label>
           <input
-            type={"password"}
+            type="password"
             id="password"
             name="password"
             value={fields.password}
@@ -130,9 +128,9 @@ const FormLogin = () => {
           className="spinner"
           style={{ display: spinner ? "block" : "none" }}
         >
-          <div class="d-flex justify-content-center">
-            <div class="spinner-border text-danger" role="status">
-              <span class="visually-hidden">Loading...</span>
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border text-danger" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         </div>

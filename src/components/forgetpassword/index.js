@@ -3,7 +3,7 @@ import FormPassword from "./form"
 
 const ForgetPassword= ()=>{
   return (
-    <div className="containerpassword">
+    <div className="container-form">
 
       <FormPassword/>
 

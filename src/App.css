@@ -8,25 +8,25 @@
 }
 .container-form .content-form {
   height: 90vh;
-  width: 320px;
+  width: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6039215686);
+  background-color: #000000;
   box-shadow: 0px 0px 15px 0px rgba(247, 245, 245, 0.2666666667);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 @media (max-width: 600px) {
   .container-form .content-form {
     width: 100%;
   }
 }
-.container-form .form-login {
+.container-form .form-login, .container-form .form-forget-password, .container-form .form-acess-code {
   font-family: "Bebas Neue", sans-serif;
   display: flex;
   letter-spacing: 3px;
   flex-direction: column;
-  color: white;
+  color: #ffffff;
   border-color: #9f6418;
   box-shadow: 1px 2px 8px 1px rgba(255, 253, 253, 0.1725490196);
   width: 95%;
@@ -34,18 +34,18 @@
   align-items: center;
   justify-content: center;
 }
-.container-form .form-login .login {
+.container-form .form-login .login, .container-form .form-forget-password .login, .container-form .form-acess-code .login {
   display: flex;
   margin-bottom: 1rem;
   justify-content: center;
   align-items: center;
 }
-.container-form .form-login .login h1 {
+.container-form .form-login .login h1, .container-form .form-forget-password .login h1, .container-form .form-acess-code .login h1 {
   color: #ffffff;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   text-align: center;
 }
-.container-form .form-login .inputs {
+.container-form .form-login .inputs, .container-form .form-forget-password .inputs, .container-form .form-acess-code .inputs {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -53,29 +53,20 @@
   align-items: center;
   padding: 1rem 0rem 0rem 0rem;
 }
-.container-form .form-login .inputs .email {
+.container-form .form-login .inputs label, .container-form .form-forget-password .inputs label, .container-form .form-acess-code .inputs label {
+  width: 7rem;
+}
+.container-form .form-login .inputs .email, .container-form .form-login .inputs .password, .container-form .form-login .inputs .name, .container-form .form-login .inputs .acess-code, .container-form .form-forget-password .inputs .email, .container-form .form-forget-password .inputs .password, .container-form .form-forget-password .inputs .name, .container-form .form-forget-password .inputs .acess-code, .container-form .form-acess-code .inputs .email, .container-form .form-acess-code .inputs .password, .container-form .form-acess-code .inputs .name, .container-form .form-acess-code .inputs .acess-code {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 70%;
   min-width: 280px;
 }
-.container-form .form-login .inputs .password {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70%;
-  min-width: 280px;
-}
-.container-form .form-login input {
+.container-form .form-login input, .container-form .form-forget-password input, .container-form .form-acess-code input {
   width: 100%;
 }
-@media (max-width: 460px) {
-  .container-form .form-login input {
-    width: 100%;
-  }
-}
-.container-form .form-login .options {
+.container-form .form-login .options, .container-form .form-login .options-btn, .container-form .form-forget-password .options, .container-form .form-forget-password .options-btn, .container-form .form-acess-code .options, .container-form .form-acess-code .options-btn {
   font-family: "Bebas Neue", sans-serif;
   margin: 1rem 0rem;
   font-weight: 100;
@@ -84,25 +75,25 @@
   justify-content: space-around;
   width: 100%;
 }
-.container-form .form-login .options p > a {
+.container-form .form-login .options p > a, .container-form .form-login .options-btn p > a, .container-form .form-forget-password .options p > a, .container-form .form-forget-password .options-btn p > a, .container-form .form-acess-code .options p > a, .container-form .form-acess-code .options-btn p > a {
   text-decoration: none;
   color: #ffffff;
 }
-.container-form .form-login .options p > a:hover {
+.container-form .form-login .options p > a:hover, .container-form .form-login .options-btn p > a:hover, .container-form .form-forget-password .options p > a:hover, .container-form .form-forget-password .options-btn p > a:hover, .container-form .form-acess-code .options p > a:hover, .container-form .form-acess-code .options-btn p > a:hover {
   color: #9f6418;
   transition: 0.3s;
 }
-.container-form .form-login .message-error {
+.container-form .form-login .message-error, .container-form .form-forget-password .message-error, .container-form .form-acess-code .message-error {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #9f6418;
 }
-.container-form .form-login .btn-class {
+.container-form .form-login .btn-class, .container-form .form-forget-password .btn-class, .container-form .form-acess-code .btn-class {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 100%;
 }
-.container-form .form-login .btn-class button {
+.container-form .form-login .btn-class button, .container-form .form-forget-password .btn-class button, .container-form .form-acess-code .btn-class button {
   width: 5.5rem;
   font-size: 1.5rem;
   background: none;
@@ -111,20 +102,47 @@
   border-radius: 1rem;
   font-family: "bebas Neue", sans-serif;
 }
-.container-form .form-login .btn-class button:hover {
+.container-form .form-login .btn-class button:hover, .container-form .form-forget-password .btn-class button:hover, .container-form .form-acess-code .btn-class button:hover {
   color: #9f6418;
   transition: 0.3s;
   cursor: pointer;
 }
-.container-form .form-login .user-error {
+.container-form .form-login .options-btn button, .container-form .form-login .options-btn a, .container-form .form-forget-password .options-btn button, .container-form .form-forget-password .options-btn a, .container-form .form-acess-code .options-btn button, .container-form .form-acess-code .options-btn a {
+  width: 6.5rem;
+  font-size: 1.5rem;
+  background: none;
+  border: 2px solid #9f6418;
+  color: #ffffff;
+  border-radius: 1rem;
+  font-family: "bebas Neue", sans-serif;
+}
+.container-form .form-login .options-btn button:hover, .container-form .form-login .options-btn a:hover, .container-form .form-forget-password .options-btn button:hover, .container-form .form-forget-password .options-btn a:hover, .container-form .form-acess-code .options-btn button:hover, .container-form .form-acess-code .options-btn a:hover {
+  color: #9f6418;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.container-form .form-login .options-btn a, .container-form .form-forget-password .options-btn a, .container-form .form-acess-code .options-btn a {
+  text-align: center;
+  text-decoration: none;
+}
+.container-form .form-login .user-error, .container-form .form-forget-password .user-error, .container-form .form-acess-code .user-error {
   width: 300px;
   color: #9f6418;
   font-size: 1rem;
   margin-top: 0.5rem;
 }
-.container-form .form-login .spinner {
+.container-form .form-login .spinner, .container-form .form-forget-password .spinner, .container-form .form-acess-code .spinner {
   margin-bottom: 1rem;
   width: 100%;
+}
+
+.alert {
+  height: 100vh;
+  width: 100vw;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #container {

@@ -49,7 +49,7 @@ const NewPassword = () => {
 
         setTimeout(() => {
           setRedirectToLogin(true);
-        }, 10000);
+        }, 5000);
         
       } catch (error) {
         setError(error.response.data);
@@ -77,23 +77,27 @@ const NewPassword = () => {
 
   if (!alert) {
     return (
-      <div className="containerpassword">
+      <div className="container-form">
         <div className="content-form">
           <form onSubmit={HandleSubmit} className="form-login">
             <div className="login">
               <h1>LOGIN</h1>
             </div>
             <div className="inputs">
-              <label htmlFor="newPassword">senha:</label>
+             <div className="password">
+             <label htmlFor="newPassword">senha:</label>
               <input
                 type={"password"}
                 id="newPassword"
                 name="newPassword"
                 required
                 onChange={HandleChange}
+
+              
               ></input>
-            </div>
-            <div className="inputs">
+             </div>
+
+              <div className="password">
               <label htmlFor="confirmPassword">senha:</label>
               <input
                 type={"password"}
@@ -102,7 +106,9 @@ const NewPassword = () => {
                 required
                 onChange={HandleChange}
               ></input>
+              </div>
             </div>
+         
             <p className="user-error">{error}</p>
             <div className="spinner" style={{display:spinner?"block": "none"}}>
               <div class="d-flex justify-content-center">
@@ -111,10 +117,10 @@ const NewPassword = () => {
                 </div>
               </div>
             </div>
-            <div className="btn-newpassword">
-              <button type="button">
+            <div className="options-btn">
+             
                 <Link to={"/login"}>Voltar</Link>
-              </button>
+              
               <button type="submit">Confirmar</button>
             </div>
           </form>
