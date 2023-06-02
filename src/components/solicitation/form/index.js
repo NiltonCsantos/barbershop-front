@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, userRef} from "react";
 
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -32,6 +32,8 @@ const Form = () => {
   });
   const [spinner, setSpinner] = useState(false);
   const [alertspinner, setAlertSpinner] = useState(false);
+
+  const refSelect=useRef();
 
   const [fields, setFields] = useState({
     time: " ",
@@ -101,12 +103,15 @@ const Form = () => {
   };
 
   const HandleSelect = async () => {
+
+   
+
     const response = await userService.solicitatonPostDate({
       date: fields.date,
     });
 
 
-    const listTime = response.data;
+    setTime( response.data);
 
     let day = fields.date[8];
     day += fields.date[9];
@@ -130,12 +135,18 @@ const Form = () => {
       fields.date = "";
     }
 
-    setTime(listTime);
+
+    checkTime();
+
 
    
   };
 
+
+
+
   const CheckOrder = () => {
+
     if (
       checkHair == false &&
       checkBarb == false &&
@@ -170,22 +181,50 @@ const Form = () => {
     setCheckHairTreatment(!checkHairTreatment);
   };
 
-  function checkTime(hours) {
+   function checkTime() {
 
+    // refSelect.current.children.shift();
 
-    const timeList=time.hours;
+    const array= [...refSelect.current.children];
 
-    const professionalList=time.professional;
+    console.log(time.hours);
 
-    for (let i = 0; i < timeList.length; i++) {
+    array.shift();
+
+  
+   
+    console.log(array)
+
+   
+
+    for (let i = 0; i <time.hours.length; i++) {
+
+      console.log("laço")
       
-      if(timeList[i].match(hours) && professionalList[i].match(fields.professional)){
-        return true;
-      }else{
-        return false;
-      }
+         for (let j = 0; j < array.length; j++) {
+          
+          console.log(array[j].value)
+
+              if(time.hours[i]==array[j].value){
+                array[j].disabled=true;
+              }else{
+                array[j].disabled=false;
+              }
+          
+         }
       
     }
+
+
+
+
+    // for (let i = 0; i <   refSelect.current.children.length; i++) {
+      
+    //   if(refSelect.current.children[i].disabled==true){
+    //     refSelect.current.children[i].style.color="#9f6418"
+    //   }
+      
+    // }
    
   }
 
@@ -328,71 +367,72 @@ const Form = () => {
               <div>
                 <select
                   className="choose"
-                  onClick={HandleSelect}
                   disabled={fields.date.length <= 1 ? true : false}
                   name="time"
                   onChange={HandleChange}
                   required
+                  ref={refSelect}
+                  onLoa={HandleSelect}
                 >
                   <option value="">Selecione</option>
                   <option
                     value="07:00"
-                    disabled={checkTime("07:00")}
+                    
                   >
                     07:00
                   </option>
-                  <option value="07:30" disabled={checkTime("07:30")}>
+                  <option value="07:30" >
                     07:30
                   </option>
-                  <option value="08:00" disabled={checkTime("08:00")}>
+                  <option value="08:00" >
                     08:00
                   </option>
-                  <option value="08:30" disabled={checkTime("08:30")}>
+                  <option value="08:30" >
                     08:30
                   </option>
-                  <option value="09:00" disabled={checkTime("09:00")}>
+                  <option value="09:00">
                     09:00
                   </option>
-                  <option value="09:30" disabled={checkTime("09:30")}>
+                  <option value="09:30" >
                     09:30
                   </option>
-                  <option value="10:00" disabled={checkTime("10:00")}>
+                  <option value="10:00" >
                     10:00
                   </option>
-                  <option value="10:30" disabled={checkTime("10:30")}>
+                  <option value="10:30" >
                     10:30
                   </option>
-                  <option value="11:00" disabled={checkTime("11:00")}>
+                  <option value="11:00" >
                     11:00
                   </option>
-                  <option value="11:30" disabled={checkTime("11:30")}>
+                  <option value="11:30" >
                     11:30
                   </option>
-                  <option value="13:00" disabled={checkTime("13:00")}>
+                  <option value="13:00" >
                     13:00
                   </option>
-                  <option value="13:30" disabled={checkTime("13:30")}>
+                  <option value="13:30" >
                     13:30
                   </option>
-                  <option value="14:00" disabled={checkTime("14:00")}>
+                  <option value="14:00" >
                     14:00
                   </option>
-                  <option value="14:30" disabled={checkTime("14:30")}>
+                  <option value="14:30" >
                     14:30
                   </option>
-                  <option value="15:00" disabled={checkTime("15:00")}>
+                  <option value="15:00" >
                     15:00
                   </option>
-                  <option value="15:30" disabled={checkTime("15:30")}>
+                  <option value="15:30" >
                     15:30
                   </option>
-                  <option value="16:00" disabled={checkTime("16:00")}>
+                  <option value="16:00" >
                     16:00
                   </option>
-                  <option value="16:30" disabled={checkTime("16:30")}>
+                  <option value="16:30" >
                     16:30
                   </option>
-                  <option value="17:00" disabled={checkTime("17:00")}>
+                  <option value="17:00" >
                     17:00
                   </option>
                 </select>

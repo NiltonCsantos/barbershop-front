@@ -8,7 +8,7 @@ const FormPassword = () => {
   });
   const [message, setMessage] = useState("");
   const [confirm, setConfirm]=useState(false);
-  const [spinner, setSpinner] = useState(true);
+  const [spinner, setSpinner] = useState(false);
   
     if(confirm){
       return <Navigate to={"/login/forgetpassword/acesscode"}/>
