@@ -1,4 +1,4 @@
-import React, {useRef, userRef} from "react";
+import React, { useRef, userRef } from "react";
 
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -27,13 +27,13 @@ const Form = () => {
   const [checkHairTreatment, setCheckHairTreatment] = useState(false);
   const [errorSpan, setErrorSpan] = useState("");
   const [time, setTime] = useState({
-    hours:[],
-    professional:[]
+    hours: [],
+    professional: [],
   });
   const [spinner, setSpinner] = useState(false);
   const [alertspinner, setAlertSpinner] = useState(false);
 
-  const refSelect=useRef();
+  const refSelect = useRef();
 
   const [fields, setFields] = useState({
     time: " ",
@@ -76,7 +76,7 @@ const Form = () => {
 
       const order = `${fields.hair} ${fields.barb} ${fields.eyebrow} ${fields.hairTreatment}`;
 
-      const response=await userService.solicitaton({
+      const response = await userService.solicitaton({
         time: fields.time,
         solicitation: order,
         date: fields.date,
@@ -84,7 +84,7 @@ const Form = () => {
         user: id,
       });
 
-      if(response){
+      if (response) {
         setAlertSpinner(true);
       }
 
@@ -95,23 +95,21 @@ const Form = () => {
       setError(error.response.data);
       setSpinner(false);
       setTimeout(() => {
-
         setError("");
-        
       }, 4000);
     }
   };
 
   const HandleSelect = async () => {
-
-   
-
     const response = await userService.solicitatonPostDate({
       date: fields.date,
     });
 
+    console.log(response.data);
 
-    setTime( response.data);
+
+
+    setTime(response.data);
 
     let day = fields.date[8];
     day += fields.date[9];
@@ -135,18 +133,9 @@ const Form = () => {
       fields.date = "";
     }
 
-
-    checkTime();
-
-
-   
   };
 
-
-
-
   const CheckOrder = () => {
-
     if (
       checkHair == false &&
       checkBarb == false &&
@@ -155,11 +144,9 @@ const Form = () => {
     ) {
       setCondition(true);
       setErrorSpan("Você deve marcar pelo menos uma opção!");
-      
-      setTimeout(() => {
 
+      setTimeout(() => {
         setErrorSpan("");
-        
       }, 4000);
 
       setTimeout(() => {
@@ -181,51 +168,19 @@ const Form = () => {
     setCheckHairTreatment(!checkHairTreatment);
   };
 
-   function checkTime() {
 
-    // refSelect.current.children.shift();
-
-    const array= [...refSelect.current.children];
-
-    console.log(time.hours);
-
-    array.shift();
-
+  function checkTime(hours) {
   
+   for (let i = 0; i < time.hours.length; i++) {
    
-    console.log(array)
+        if(hours.match(time.hours[i]) && fields.professional.match(time.professional[i])){
+          return true;
+        }
 
-   
-
-    for (let i = 0; i <time.hours.length; i++) {
-
-      console.log("laço")
-      
-         for (let j = 0; j < array.length; j++) {
-          
-          console.log(array[j].value)
-
-              if(time.hours[i]==array[j].value){
-                array[j].disabled=true;
-              }else{
-                array[j].disabled=false;
-              }
-          
-         }
-      
-    }
+   }
 
 
-
-
-    // for (let i = 0; i <   refSelect.current.children.length; i++) {
-      
-    //   if(refSelect.current.children[i].disabled==true){
-    //     refSelect.current.children[i].style.color="#9f6418"
-    //   }
-      
-    // }
-   
+ 
   }
 
   if (!alertspinner) {
@@ -236,7 +191,7 @@ const Form = () => {
             <h2>Bem vindo, {localStorage.getItem("name")}</h2>
 
             <p>Marque o que você deseja fazer</p>
-           
+
             <div className="hair">
               <div className="inputs-solicitation">
                 <div className="hair">
@@ -293,7 +248,6 @@ const Form = () => {
 
                 <span className="user-error">{errorSpan}</span>
               </div>
-             
             </div>
 
             <p>Selecione um de nossos profissionais</p>
@@ -361,9 +315,8 @@ const Form = () => {
               ></input>
             </div>
 
-            
             <div className="calendar">
-            <p>Agendar horário</p>
+              <p>Agendar horário</p>
               <div>
                 <select
                   className="choose"
@@ -372,67 +325,64 @@ const Form = () => {
                   onChange={HandleChange}
                   required
                   ref={refSelect}
-                  onLoa={HandleSelect}
+                  onClick={HandleSelect}
                 >
                   <option value="">Selecione</option>
-                  <option
-                    value="07:00"
-                    
-                  >
+                  <option value="07:00" disabled={checkTime("07:00")}>
                     07:00
                   </option>
-                  <option value="07:30" >
+                  <option value="07:30" disabled={checkTime("07:30")}>
                     07:30
                   </option>
-                  <option value="08:00" >
+                  <option value="08:00" disabled={checkTime("08:00")}>
                     08:00
                   </option>
-                  <option value="08:30" >
+                  <option value="08:30" disabled={checkTime("08:30")}>
                     08:30
                   </option>
-                  <option value="09:00">
+                  <option value="09:00" disabled={checkTime("09:00")}>
                     09:00
                   </option>
-                  <option value="09:30" >
+                  <option value="09:30" disabled={checkTime("09:30")}>
                     09:30
                   </option>
-                  <option value="10:00" >
+                  <option value="10:00" disabled={checkTime("10:00")}>
                     10:00
                   </option>
-                  <option value="10:30" >
+                  <option value="10:30" disabled={checkTime("10:30")}>
                     10:30
                   </option>
-                  <option value="11:00" >
+                  <option value="11:00" disabled={checkTime("11:00")}>
                     11:00
                   </option>
-                  <option value="11:30" >
+                  <option value="11:30" disabled={checkTime("11:30")}>
                     11:30
                   </option>
-                  <option value="13:00" >
+                  <option value="13:00" disabled={checkTime("13:00")}>
                     13:00
                   </option>
-                  <option value="13:30" >
+                  <option value="13:30" disabled={checkTime("13:30")}>
                     13:30
                   </option>
-                  <option value="14:00" >
+                  <option value="14:00" disabled={checkTime("14:00")}>
                     14:00
                   </option>
-                  <option value="14:30" >
+                  <option value="14:30" disabled={checkTime("14:30")}>
                     14:30
                   </option>
-                  <option value="15:00" >
+                  <option value="15:00" disabled={checkTime("15:00")}>
                     15:00
                   </option>
-                  <option value="15:30" >
+                  <option value="15:30" disabled={checkTime("15:30")}>
                     15:30
                   </option>
-                  <option value="16:00" >
+                  <option value="16:00" disabled={checkTime("16:00")}>
                     16:00
                   </option>
-                  <option value="16:30" >
+                  <option value="16:30" disabled={checkTime("16:30")}>
                     16:30
                   </option>
-                  <option value="17:00" >
+                  <option value="17:00" disabled={checkTime("17:00")}>
                     17:00
                   </option>
                 </select>
@@ -453,22 +403,20 @@ const Form = () => {
             <p className="user-error">{error}</p>
 
             <div className="button-solicitation">
-              <button
-                type="submit"
-                onClick={CheckOrder}
-                disabled={conditiom}
-              >
+              <button type="submit" onClick={CheckOrder} disabled={conditiom}>
                 Confirmar
               </button>
             </div>
-          
           </form>
         </div>
       </div>
     );
   } else {
     return (
-      <div className="alert alert-success d-flex align-items-center" role="alert">
+      <div
+        className="alert alert-success d-flex align-items-center"
+        role="alert"
+      >
         <div>
           <BiCheckCircle /> Pedido realizado com sucesso!
         </div>

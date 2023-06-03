@@ -9,6 +9,7 @@ const Professionals = () => {
         <div className="professional professional1">
           <p>Rafa</p>
         </div>
+
         <div className="professional professional2">
           <p>Duca</p>
         </div>
