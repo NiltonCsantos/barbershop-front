@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "https://barbershop-api-production.up.railway.app",
+  baseURL: "https://clear-elk-hosiery.cyclic.cloud/",
 });
 
 export default Api;
